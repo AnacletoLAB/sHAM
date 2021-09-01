@@ -1,6 +1,7 @@
 import sys
 import math
 import numpy as np
+import numba
 from numba import njit, jit, prange
 import timeit
 from compressionNN import huffman
@@ -73,7 +74,7 @@ def space_for_row_cum(matr, list_):
 maindir = 'csv_data/'
 filelist = sorted(glob(maindir + '*.csv'))
 
-outf = open("./results_mnist256.txt", "a")
+outf = open("./results.txt", "a")
 outf.write("filename t_numpy s_numpy t_ham t_ham_cpp_1c t_ham_cpp_opt t_ham_cpp_p s_ham t_gios s_gios t_sham t_sham_p t_sham_new_p s_sham t_csc s_csc t_csr s_csr t_coo s_coo\n")
 outf.close()
 
@@ -169,6 +170,7 @@ for fff in filelist:
     print("sham_p ", end='', flush=True)
     t_sham_p_new = timeit.timeit("dotp_cpp_sparse_new(new_list_rows, cumul_c, list_data_reduced, d_rev_data, vvv2, 12)", number=10, globals=globals()) / 10
     print("sham_p_new ", end='', flush=True)
+    #s_sham = asizeof.asizeof(list_data_reduced) + asizeof.asizeof(d_rev_data)
     list_bin = huffman.make_words_list_to_int(data_encoded, bit_words_machine)
     int_from_strings = huffman.convert_bin_to_int(list_bin)
     s_sham = dictspace(d_rev)
@@ -200,7 +202,8 @@ for fff in filelist:
         t_csc, s_csc / 1024, t_csr, s_csr / 1024, t_coo, s_coo / 1024,
     )
 
-    outf = open("./results_mnist256.txt", "a")
+    outf = open("./results.txt", "a")
     outf.write(outstring)
     outf.close()
     print("saved")
+
