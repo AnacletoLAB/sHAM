@@ -1,0 +1,3 @@
+from compressionNN.test import huffman_test
+from compressionNN.test import sparse_huffman_test
+from compressionNN.test import sparse_huffman_only_data_test
