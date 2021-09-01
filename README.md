@@ -6,13 +6,13 @@ conference. The original contribution is [available](ICPR2020_sHAM.pdf) for revi
 a companion paper currently submitted to the [RRPR](https://rrpr2020.sciencesconf.org/) conference.
 Also, the original package is available on [this repository](https://github.com/giosumarin/ICPR2020_sHAM).
 
-This package introduces new compression quantization strategies; also, their application is no
-longer limited to Fully Connected layers, as now Convolutional Layers are supported.
+This package improves the original contribution by adding new quantization strategies; also, their 
+application is no longer limited to Fully Connected layers, as now Convolutional Layers are supported.
 
 We also introduced a new optimized dot procedure written in C++ which reduces the overal execution
-time for training and testing of HAM and sHAM compressed models.
+time for the training and testing of HAM and sHAM compressed models.
 
-The experiments folder contins the basic scripts used for performing the tests presented in the
+The experiments folder contains the basic scripts used for performing the tests presented in the
 forthcoming paper.
 
 
@@ -21,12 +21,14 @@ forthcoming paper.
 ### Prerequisites
 
 * Install `python3`, `python3-pip` and `python3-venv` (Debian 10.6)
-* Make sure that `python --version` starts by 3 or execute `alias python='pyhton3'` in the shell before executing `runner.sh`.
+* Make sure that `python --version` starts by 3 or execute `alias python='pyhton3'` in the shell.
 * For CUDA configuration (if GPU is available) follow https://www.tensorflow.org/install/gpu.
+* From the root of this repository, install the Python package through pip: `pip install -e ./compressionNN_package` 
 
 ### Compiling megaDot
-At present time, we do not provide automatic compile for the C++ dot. However, we use
-cmake for automatically download and compile all the dependencies of the c++ code.
+At present time, the installation of the main Python package does not trigger the automatic compile of the
+optimized C++ dot procedure, but it must be manually compiled. However, we use
+cmake for download and compile all the dependencies of the c++ code.
 For this reason, the only requirements are the installation of `make`, `cmake` and of a relatively
 new C++ compiler (code was tested with various releases of g++ > 5.4.0)
 
@@ -35,7 +37,8 @@ From the root of this repository:
 * call cmake:  `cmake ../megaDot`
 * compile:  `make`
 
-This procedure generates the `libmegaDot.so` library file. A pre-compiled version for Linux x86-64 is present
+This procedure generates the `libmegaDot.so` library file that can be imported in any Python script
+as `from libmegaDot import dotp_cpp, dotp_cpp_sparse`. A pre-compiled version for Linux x86-64 is present
 in the experiments/time_space directory
 
 
@@ -49,7 +52,7 @@ the directory tree
 ## Usage
 Pruning + quantization and network compression are separately executed in two stages.
 1. To apply pruning and/or quantization to a model, we provide the `compress.py` script in the
-experiments/performance_eval directory. These script are customized for VGG and DeepDTA networks
+experiments/performance_eval directory. These script are customized for VGG and DeepDTA networks,
 and a minimal runner script is contained in each network sub-directory
 2. To compress a trained network with either HAM or sHAM we provide the `uws_testing_time_space.py`
 example script in the experiments/time_space directory, as well with a sample runner script.
