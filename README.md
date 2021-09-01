@@ -64,3 +64,7 @@ To use the script:
 * copy a trained VGG .h5 model file into the experiments/SOTA_comparison/csv_data directory
 * run the generate_csv.py script
 * run the compare_VGG.py script
+
+
+### License
+This software is distributed under the [Apache-2.0 License](https://github.com/AnacletoLAB/sHAM/blob/main/README.md).
