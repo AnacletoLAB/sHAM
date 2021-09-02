@@ -12,13 +12,11 @@ from functools import reduce
 from itertools import repeat
 from multiprocessing import Pool
 
-import keras
-import numba
+from numba import njit
 import numpy as np
 import tensorflow as tf
 from datahelper_noflag import *
-from keras.datasets import mnist, cifar10
-from keras.utils import np_utils
+from tensorflow.keras.datasets import mnist, cifar10
 
 from compressionNN import huffman
 from compressionNN import sparse_huffman
@@ -27,7 +25,7 @@ from libmegaDot import dotp_cpp, dotp_cpp_sparse
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-exec(open("../nets/GPU.py").read())
+exec(open("../performance_eval/GPU.py").read())
 
 @njit(["float32[:,:](float32[:,:], float32[:,:], int32, float32, int32)","int64[:,:](int64[:,:], int64[:,:], int32, int64, int32)"], nogil=True, fastmath=True, cache=True)
 def mult_for_row(input_x, output, current_row, current_d, column):
@@ -415,7 +413,7 @@ try:
                 if arg == "kiba":
                     print(arg)
                     # data loading
-                    dataset_path = '../nets/DeepDTA/data_utils/kiba/'
+                    dataset_path = '../performance_eval/DeepDTA/data_utils/kiba/'
                     dataset = DataSet( fpath = dataset_path, ### BUNU ARGS DA GUNCELLE
                                           setting_no = 1, ##BUNU ARGS A EKLE
                                           seqlen = 1000,
@@ -447,7 +445,7 @@ try:
 
                 elif arg == "davis":
                     # data loading
-                    dataset_path = '../nets/DeepDTA/data_utils/davis/'
+                    dataset_path = '../performance_eval/DeepDTA/data_utils/davis/'
                     dataset = DataSet( fpath = dataset_path, ### BUNU ARGS DA GUNCELLE
                                           setting_no = 1, ##BUNU ARGS A EKLE
                                           seqlen = 1200,
@@ -484,14 +482,14 @@ try:
                     x_test = x_test.reshape((x_test.shape[0], 28, 28, 1))
                     x_train = x_train.astype("float32") / 255.0
                     x_test = x_test.astype("float32") / 255.0
-                    y_train = np_utils.to_categorical(y_train, 10)
-                    y_test = np_utils.to_categorical(y_test, 10)
+                    y_train = tf.keras.utils.to_categorical(y_train, 10)
+                    y_test = tf.keras.utils.to_categorical(y_test, 10)
                 elif arg == "cifar10":
                     # data loading
                     num_classes = 10
                     (x_train, y_train), (x_test, y_test) = cifar10.load_data()
-                    y_train = keras.utils.to_categorical(y_train, num_classes)
-                    y_test = keras.utils.to_categorical(y_test, num_classes)
+                    y_train = tf.keras.utils.utils.to_categorical(y_train, num_classes)
+                    y_test = tf.keras.utils.utils.to_categorical(y_test, num_classes)
                     x_train = x_train.astype('float32')
                     x_test = x_test.astype('float32')
 
@@ -566,7 +564,7 @@ for weights in sorted(onlyfiles):
                 space_dense, space_huffman, t_np, t_huff, t_p, t_p_cpp = make_huffman(model, lodi, lodwi, lw, also_parallel=True)
                 time_h.append(floor(t_huff/t_np))
             elif type_compr == "sham":
-                space_dense, space_huffman, t_np, t_p, t_p_cpp = make_huffman_sparse_par(model, lodi, lodwi, lw, also_parallel=True)
+                space_dense, space_shuffman, t_np, t_p, t_p_cpp = make_huffman_sparse_par(model, lodi, lodwi, lw, also_parallel=True)
             elif type_compr == "all":
                  space_dense, space_huffman, t_np, t_huff, t_p, t_p_cpp = make_huffman(model, lodi, lodwi, lw, also_parallel=True)
                  space_dense, space_shuffman, t_np, t_p, t_p_cpp = make_huffman_sparse_par(model, lodi, lodwi, lw, also_parallel=True)
@@ -574,8 +572,10 @@ for weights in sorted(onlyfiles):
             pruning_l_h.append(pr)
             ws_l_h.append(ws)
             diff_acc_h.append(round(ws_acc-original_acc, 5))
-            space_h.append(round((space_compr_cnn + space_huffman)/(space_expanded_cnn + space_dense), 5)) # Tengo conto anche di cnn
-            space_sh.append(round((space_compr_cnn + space_shuffman)/(space_expanded_cnn + space_dense), 5))
+            if type_compr in ["ham", "all"]:
+                space_h.append(round((space_compr_cnn + space_huffman)/(space_expanded_cnn + space_dense), 5)) # Tengo conto anche di cnn
+            if type_compr in ["sham", "all"]:
+                space_sh.append(round((space_compr_cnn + space_shuffman)/(space_expanded_cnn + space_dense), 5))
             nonzero_h.append(non_zero)
             ### Commentato per salvare solo i tempi, non i rapporti
             # time_h_p.append(round(t_p/t_np, 5))
@@ -591,7 +591,7 @@ for weights in sorted(onlyfiles):
             elif type_compr == "sham":
                 ### Commentato per salvare solo i tempi, non i rapporti
                 # print("{} {} acc1, space {}, time p {} time p cpp {} ".format(ws_l_h[-1], diff_acc_h[-1], space_h[-1], time_h_p[-1], time_h_p_cpp[-1]))
-                print("{} {} acc1, space {}, time {} time p {} time p cpp {} ".format(ws_l_h[-1], diff_acc_h[-1], space_h[-1], time_h[-1], time_h_p[-1], time_h_p_cpp[-1]))
+                print("{} {} acc1, space {}, time {} time p {} time p cpp {} ".format(ws_l_h[-1], diff_acc_h[-1], space_sh[-1], time_h[-1], time_h_p[-1], time_h_p_cpp[-1]))
                 ####
             elif type_compr == "all":
                 print("{} {} acc1, spaceh {}, spacesh {},time {} time p {} time p cpp {} ".format(ws_l_h[-1], diff_acc_h[-1], space_h[-1], space_sh[-1], time_h[-1], time_h_p[-1], time_h_p_cpp[-1]))
