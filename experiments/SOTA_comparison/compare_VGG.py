@@ -93,7 +93,7 @@ for fff in filelist:
     print("np ", end='', flush=True)
 
 
-    ##### Huffmann
+    ##### HAM
     symb2freq = huffman.dict_elem_freq(inmat)
     e = huffman.encode(symb2freq)
     d_rev = huffman.reverse_elements_list_to_dict(e)
@@ -121,7 +121,7 @@ for fff in filelist:
     s_ham += bit_words_machine / 8 * len(int_from_strings)
 
 
-    ##### Metodo Indici
+    ##### index map
     vect_weights = np.hstack(inmat).reshape(-1,1)
     all_vect_weights = np.concatenate(vect_weights, axis=None).reshape(-1,1)
     uniques = np.unique(all_vect_weights)
@@ -138,7 +138,7 @@ for fff in filelist:
     print("gios ", end='', flush=True)
 
 
-    ##### Sparse Huffmann
+    ##### sHAM
     symb2freq = huffman.dict_elem_freq(inmat[inmat != 0])
     e = huffman.encode(symb2freq)
     d_rev = huffman.reverse_elements_list_to_dict(e)
