@@ -60,7 +60,7 @@ def main(compression, net, dataset, learning_rate, lr_cumulative, minibatch, prf
     elif compression == 'pruUQ':
         compression_model = pruning_uUQ.pruning_uUQ(model=model, perc_prun_for_dense=prfc, perc_prun_for_cnn=prcnn, clusters_for_conv_layers=clustercnn, clusters_for_dense_layers=clusterfc)
     elif compression == 'pruECSQ':
-        compression_model = pruning_uECSQ.pruning_uECSQ(mmodel=model, perc_prun_for_dense=prfc, perc_prun_for_cnn=prcnn, clusters_for_conv_layers=3*clustercnn, clusters_for_dense_layers=3*clusterfc, wanted_clusters_cnn=clustercnn, wanted_clusters_fc=clusterfc, tr=tr, lamb=lambd)
+        compression_model = pruning_uECSQ.pruning_uECSQ(model=model, perc_prun_for_dense=prfc, perc_prun_for_cnn=prcnn, clusters_for_conv_layers=3*clustercnn, clusters_for_dense_layers=3*clusterfc, wanted_clusters_cnn=clustercnn, wanted_clusters_fc=clusterfc, tr=tr, lamb=lambd)
 
     # Load dataset
     if dataset == "MNIST":
