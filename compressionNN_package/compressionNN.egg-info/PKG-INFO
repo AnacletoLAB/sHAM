@@ -1,8 +1,8 @@
 Metadata-Version: 1.1
 Name: compressionNN
-Version: 0.2
+Version: 1.0
 Summary: Compress neural networks, bruh
-Home-page: https://gitlab.di.unimi.it/giosumarin/neuralnetworkcompression_sham
+Home-page: https://github.com/AnacletoLAB/sHAM
 Author: Giosuè Marinò, Alessandro Petrini
 Author-email: giosumarin@gmail.com, alessandro.petrini@unimi.it
 License: UNKNOWN
