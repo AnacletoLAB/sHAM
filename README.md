@@ -1,14 +1,13 @@
 # Compact representations of convolutional neural networks via weight pruning and quantization
 This repository contains the code allowing to reproduce the results described in G. Marinò et al.,
 _Compact representations of convolutional neural networks via weight pruning and quantization_, 
-the extended and revised work of the original paper presented at [ICPR](https://www.micc.unifi.it/icpr2020/) 
-conference, whose package and paper are available at [this repository](https://github.com/giosumarin/ICPR2020_sHAM).
+extending the conference paper presented at [ICPR2020](https://www.micc.unifi.it/icpr2020/), whose package and paper are available at [this repository](https://github.com/giosumarin/ICPR2020_sHAM).
 
-This package improves the previous contribution by adding new quantization strategies; moreover, their 
-application is no longer limited to Fully Connected layers, as now Convolutional Layers are supported.
+This package improves the previous contribution by adding new quantization strategies, and  
+Convolutional Layers are now supported in addition to Fully Connected layers.
 
 We also introduced a new optimized dot procedure, written in C++, reducing the overal execution
-time for training and testing HAM and sHAM compressed models.
+time for training and testing HAM and sHAM compressed models, and a comparison with other matrix compression methods.
 
 The `experiments` folder contains the basic scripts used for performing the tests presented in the
 presented paper.
