@@ -1,11 +1,10 @@
-# Compression strategies and space-conscious representations for deep neural networks
+# Compact representations of convolutional neural networks via weight pruning and quantization
 This repository contains the code allowing to reproduce the results described in G. Marinò et al.,
 _Compact representations of convolutional neural networks via weight pruning and quantization_, 
 the extended and revised work of the original paper presented at [ICPR](https://www.micc.unifi.it/icpr2020/) 
-conference. The original contribution is [available](ICPR2020_sHAM.pdf) for reviewing purposes.
-The original package is also available at [this repository](https://github.com/giosumarin/ICPR2020_sHAM).
+conference, whose package and paper are available at [this repository](https://github.com/giosumarin/ICPR2020_sHAM).
 
-This package improves the original contribution by adding new quantization strategies; moreover, their 
+This package improves the previous contribution by adding new quantization strategies; moreover, their 
 application is no longer limited to Fully Connected layers, as now Convolutional Layers are supported.
 
 We also introduced a new optimized dot procedure, written in C++, reducing the overal execution
