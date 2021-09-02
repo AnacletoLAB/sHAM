@@ -117,7 +117,7 @@ class uECSQ(uCWS.uCWS):
             print(lam, end=' ')
             massive_weight_list = self.extract_weights(instan, perc)
             c, _ = ECSQ(massive_weight_list, k=3*wanted_clusters, wanted_clusters=wanted_clusters, lambd=lam)
-            print(len(c))
+            # print(len(c))
             if len(c) >= wanted_clusters:
                 final_lambd = lambdaList[i] if (abs(len(c) - wanted_clusters) <= abs_distance) else lambdaList[i-1]
                 print("best", final_lambd)
