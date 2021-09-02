@@ -1,13 +1,6 @@
-from keras import backend as k
-from keras.utils import np_utils
-from tensorflow import keras
 import numpy as np
-import datetime
 from compressionNN import nu_pruning_CWS
 from compressionNN import nu_PWS
-
-import tensorflow as tf
-#import keras.backend.tensorflow_backend as tfback
 
 from scipy import ndimage
 
