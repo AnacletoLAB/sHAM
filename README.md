@@ -22,7 +22,8 @@ presented paper.
 * Install `python3`, `python3-pip` and `python3-venv` (Debian 10.6).
 * Make sure that `python --version` starts by 3 or execute `alias python='pyhton3'` in the shell.
 * For CUDA configuration (if a GPU is available) follow https://www.tensorflow.org/install/gpu.
-* From the root of this repository, install the Python package through pip: `pip install -e ./compressionNN_package` .
+* From the root of this repository, install the Python package through pip: `pip install -e ./compressionNN_package`.
+* Create a virtual environment and install the required depedencies: `pip install tensorflow==2.2.0 click==8.0.1 matplotlib==3.4.3 sklearn numba==0.54.0`
 
 ### Compiling megaDot
 At present time, the installation of the main Python package does not trigger the automatic compilation of the
