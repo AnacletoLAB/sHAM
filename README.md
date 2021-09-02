@@ -11,7 +11,7 @@ application is no longer limited to Fully Connected layers, as now Convolutional
 We also introduced a new optimized dot procedure, written in C++, reducing the overal execution
 time for training and testing HAM and sHAM compressed models.
 
-The experiments folder contains the basic scripts used for performing the tests presented in the
+The `experiments` folder contains the basic scripts used for performing the tests presented in the
 presented paper.
 
 
