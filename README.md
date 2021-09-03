@@ -20,7 +20,7 @@ presented paper.
 * Install `python3`, `python3-pip` and `python3-venv` (Debian 10.6).
 * Make sure that `python --version` starts by 3 or execute `alias python='pyhton3'` in the shell.
 * For CUDA configuration (if a GPU is available) follow https://www.tensorflow.org/install/gpu.
-* From the root of this repository, install the Python package through pip: `pip install -e ./sHAM_package`.
+* From the root of this repository, install the Python package through pip: `pip install ./sHAM_package`.
 * Create a virtual environment and install the required depedencies: `pip install tensorflow==2.2.0 click==8.0.1 matplotlib==3.4.3 sklearn numba==0.54.0 pympler==0.9`
 
 ### Compiling megaDot
@@ -49,7 +49,7 @@ the directory tree.
 
 ## Usage
 Pruning/quantization and network compression are separately executed in two stages.
-1. To apply pruning and/or quantization to a model, we provide the `compress.py` script in the
+1. To apply pruning and/or quantization to a model, we provide the `compression.py` script in the
 `experiments/performance_eval` directory. These scripts are customized for VGG and DeepDTA networks,
 and a minimal runner script is contained in each network sub-directory.
 2. To compress a trained network with either HAM or sHAM we provide the `uws_testing_time_space.py`
