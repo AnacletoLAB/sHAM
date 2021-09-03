@@ -6,9 +6,9 @@ import click
 
 from data_utils.datahelper_noflag import *
 from data_utils.datasets import DAVIS, KIBA
-from compressionNN import pruning, uCWS, uPWS
-from compressionNN import uUQ, uECSQ, pruning_uCWS, pruning_uPWS
-from compressionNN import pruning_uUQ, pruning_uECSQ
+from sHAM import pruning, uCWS, uPWS
+from sHAM import uUQ, uECSQ, pruning_uCWS, pruning_uPWS
+from sHAM import pruning_uUQ, pruning_uECSQ
 
 exec(open("../GPU.py").read())
 

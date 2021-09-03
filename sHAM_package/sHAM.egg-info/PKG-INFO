@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: sHAM
+Version: 1.0
+Summary: Compress neural networks, bruh
+Home-page: https://github.com/AnacletoLAB/sHAM
+Author: Giosuè Marinò, Alessandro Petrini
+Author-email: giosumarin@gmail.com, alessandro.petrini@unimi.it
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: GPL-3.0
+Classifier: Operating System :: Linux base

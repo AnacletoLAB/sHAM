@@ -4,9 +4,9 @@ import numpy as np
 import numba
 from numba import njit, jit, prange
 import timeit
-from compressionNN import huffman
-from compressionNN import sparse_huffman
-from compressionNN import sparse_huffman_only_data
+from sHAM import huffman
+from sHAM import sparse_huffman
+from sHAM import sparse_huffman_only_data
 from simplified_func import *
 from libmegaDot import dotp_cpp, dotp_cpp_opt, dotp_cpp_sparse, dotp_cpp_sparse_new
 from pympler import asizeof

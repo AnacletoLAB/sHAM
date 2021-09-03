@@ -18,9 +18,9 @@ import tensorflow as tf
 from datahelper_noflag import *
 from tensorflow.keras.datasets import mnist, cifar10
 
-from compressionNN import huffman
-from compressionNN import sparse_huffman
-from compressionNN import sparse_huffman_only_data
+from sHAM import huffman
+from sHAM import sparse_huffman
+from sHAM import sparse_huffman_only_data
 from libmegaDot import dotp_cpp, dotp_cpp_sparse
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
