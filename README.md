@@ -51,7 +51,9 @@ the directory tree.
 Pruning/quantization and network compression are separately executed in two stages.
 1. To apply pruning and/or quantization to a model, we provide the `compression.py` script in the
 `experiments/performance_eval` directory. These scripts are customized for VGG and DeepDTA networks,
-and a minimal runner script is contained in each network sub-directory.
+and a minimal runner script is contained in each network sub-directory. The original models can be found 
+in the downloaded archive, folder `sHAM_data/experiments/performance_eval/X/original_nets`, where `X` is one of 
+`VGG19` and `DeepDTA`. 
 2. To compress a trained network with either HAM or sHAM we provide the `uws_testing_time_space.py`
 example script in the `experiments/time_space directory`, as well with a sample runner script.
 
