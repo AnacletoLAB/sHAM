@@ -53,7 +53,8 @@ Pruning/quantization and network compression are separately executed in two stag
 `experiments/performance_eval/X` directory, where `X` is one of `VGG19` and `DeepDTA`. 
 These scripts are customized for VGG and DeepDTA networks, and a minimal runner script is contained 
 in each network sub-directory. The original models can be found in the downloaded archive, 
-folder `sHAM_data/experiments/performance_eval/X/original_nets`. 
+folder `sHAM_data/experiments/performance_eval/X/original_nets`. You need to copy the content of folders 
+`data_utils` and `original_nets` in the homonymous folders here. 
 2. To compress a trained network with either HAM or sHAM we provide the `uws_testing_time_space.py`
 example script in the `experiments/time_space directory`, as well with a sample runner script.
 
