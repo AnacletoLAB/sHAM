@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This example applies uUQ quantization to the DeepDTA model trained on the Davis dataset.
+# This example applies uECQS quantization to the DeepDTA model trained on the Davis dataset.
 # Clustering is applied to CNN (128 clusters) and FC (16 clusters) layer.
 python compression.py --compression uECSQ --net original_nets/deepDTA_davis.h5 --dataset DAVIS --clusterfc 16 --clustercnn 128
 
