@@ -37,7 +37,8 @@ From the root of this repository:
 
 This procedure generates the `libmegaDot.so` library file that can be imported in any Python script
 as `from libmegaDot import dotp_cpp, dotp_cpp_sparse`. A pre-compiled version for Linux x86-64 is present
-in the `experiments/time_space` directory.
+in the `experiments/time_space` directory, that is to be overwritten by a locally compiled version, since runtime issues 
+will arise when the Python3 version (used to complile it) is different than the one in use on the local machine.
 
 
 ### Additional data
