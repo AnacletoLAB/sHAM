@@ -56,7 +56,10 @@ in each network sub-directory. The original models can be found in the downloade
 folder `sHAM_data/experiments/performance_eval/X/original_nets`. You need to copy the content of folders 
 `data_utils` and `original_nets` in the homonymous folders here for `DeepDTA`, and just `orginal_nets` per `VGG19`. 
 2. To compress a trained network with either HAM or sHAM we provide the `uws_testing_time_space.py`
-example script in the `experiments/time_space directory`, as well with a sample runner script.
+example script in the `experiments/time_space directory`, as well with a sample runner script. Please note that this 
+script must be executed after those at point 1, since they generate the compressed models to be evaluated
+here and the corresponding folders. If at point 1 only partial tests are executed, modify this script accordingly to evaluate just 
+the model generated.
 
 The directory `experiments/SOTA_comparison` contains a script which compares HAM and sHAM to several
 other compression methods from the literature. Comparison takes into account compression ratios and
