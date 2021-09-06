@@ -182,7 +182,7 @@ def make_huffman(model, lodi, lodwi, lw, also_parallel=False):
 
     d_rev = huffman.reverse_elements_list_to_dict(e)
     d = dict(e)
-    print("lungh_diz", len(d))
+    #print("lungh_diz", len(d))
 
     dense_inputs = []
 
