@@ -103,8 +103,8 @@ def main(compression, net, dataset, learning_rate, lr_cumulative, minibatch, prf
     compression_model.set_optimizer(tf.keras.optimizers.Adam(learning_rate=learning_rate))
     post_compr_train = compression_model.model.evaluate(x_train, y_train)
     post_compr_test = compression_model.model.evaluate(x_test, y_test)
-    print("apply compression, performance on train -->" , post_compr_train)
-    print("apply compression, performance on test -->" , post_compr_test)
+    print("Setting initial compression setting before retraining, performance on train -->" , post_compr_train)
+    print("Setting initial compression setting before retraining, performance on test -->" , post_compr_test)
 
     # Model re-train
     if compression == "pr":
