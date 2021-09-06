@@ -90,7 +90,7 @@ for fff in filelist:
     ##### Dot numpy
     t_np = timeit.timeit("np.dot(vvv2, inmat)", number=10, globals=globals()) / 10
     s_np = asizeof.asizeof(inmat)
-    print("np ", end='', flush=True)
+    print("np dot done", end='', flush=True)
 
 
     ##### HAM
@@ -103,16 +103,16 @@ for fff in filelist:
     list_string_col, info = make_word_with_info(inmat, encoded, bit_words_machine)
     min_length_encoded = huffman.min_len_string_encoded(d_rev)
     tc = to_convert(info, list_string_col)
-    print("ham_enc ", end='', flush=True)
+    print("ham_enc done", end='', flush=True)
 
     t_ham = timeit.timeit("dotp(vvv2,tc,d_rev)", number=1, globals=globals())
-    print("ham ", end='', flush=True)
+    print("ham done", end='', flush=True)
     t_ham_cpp_nonPar = timeit.timeit("dotp_cpp(vvv2,tc,d_rev,1)", number=3, globals=globals()) / 3
-    print("ham_cpp_1c ", end='', flush=True)
+    print("ham_cpp_1c done", end='', flush=True)
     t_ham_opt = timeit.timeit("dotp_cpp_opt(vvv2,tc,d_rev,1)", number=3, globals=globals()) / 3
-    print("ham_opt ", end='', flush=True)
+    print("ham_opt done", end='', flush=True)
     t_ham_p = timeit.timeit("dotp_cpp(vvv2,tc,d_rev,12)", number=10, globals=globals()) / 10
-    print("ham_p ", end='', flush=True)
+    print("ham_p done", end='', flush=True)
 
     list_bin = huffman.make_words_list_to_int(encoded, bit_words_machine)
     min_length_encoded = huffman.min_len_string_encoded(d_rev)
@@ -135,7 +135,7 @@ for fff in filelist:
 
     k = 32 # N simboli
     s_gios = (k*32 + math.ceil(np.log2(k)) * inmat.size) / 8
-    print("gios ", end='', flush=True)
+    print("Index map done ", end='', flush=True)
 
 
     ##### sHAM
@@ -162,14 +162,14 @@ for fff in filelist:
     new_list_rows = []
     for k in list_rows:
         new_list_rows.extend(k)
-    print("sham_enc ", end='', flush=True)
+    print("sham_enc done", end='', flush=True)
 
     t_sham = timeit.timeit("dot_sparse(list_rows, list_data_reduced, d_rev_data, vvv2)", number=1, globals=globals())
-    print("sham ", end='', flush=True)
+    print("sham done", end='', flush=True)
     t_sham_p = timeit.timeit("dotp_cpp_sparse(list_rows, list_data_reduced, d_rev_data, vvv2, 12)", number=10, globals=globals()) / 10
-    print("sham_p ", end='', flush=True)
+    print("sham_p done", end='', flush=True)
     t_sham_p_new = timeit.timeit("dotp_cpp_sparse_new(new_list_rows, cumul_c, list_data_reduced, d_rev_data, vvv2, 12)", number=10, globals=globals()) / 10
-    print("sham_p_new ", end='', flush=True)
+    print("sham_p_new done", end='', flush=True)
     #s_sham = asizeof.asizeof(list_data_reduced) + asizeof.asizeof(d_rev_data)
     list_bin = huffman.make_words_list_to_int(data_encoded, bit_words_machine)
     int_from_strings = huffman.convert_bin_to_int(list_bin)
@@ -186,7 +186,7 @@ for fff in filelist:
     t_csc = timeit.timeit("inmat_csc.T.dot(vvv2.T)", number=10, globals=globals()) / 10
     t_csr = timeit.timeit("inmat_csr.T.dot(vvv2.T)", number=10, globals=globals()) / 10
     t_coo = timeit.timeit("inmat_coo.T.dot(vvv2.T)", number=10, globals=globals()) / 10
-    print("c** ", end='', flush=True)
+    print("CSC done", end='', flush=True)
     s_csc = asizeof.asizeof(inmat_csc)
     s_csr = asizeof.asizeof(inmat_csr)
     s_coo = asizeof.asizeof(inmat_coo)
