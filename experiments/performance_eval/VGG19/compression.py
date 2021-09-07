@@ -8,7 +8,7 @@ from datasets import MNIST, CIFAR10
 from sHAM import pruning, uCWS, uPWS
 from sHAM import uUQ, uECSQ, pruning_uCWS, pruning_uPWS
 from sHAM import pruning_uUQ, pruning_uECSQ
-
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 exec(open("../GPU.py").read())
 
 SEED = 1
