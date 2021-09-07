@@ -1,4 +1,4 @@
-####### THIS VERSION USE HUFFMAN ONLY ON NOT ZERO ELEMENTS, USED FOR PAPER
+####### sHAM 
 
 
 from heapq import heappush, heappop, heapify
