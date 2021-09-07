@@ -46,10 +46,10 @@ class uUQ(uCWS.uCWS):
             for delta in (range(100, dd+500, 500)):#[0.000001, 0.00001, 0.000015, 0.00002, 0.00005, 0.0001, 0.0005, 0.001, 0.005, 0.01, 0.02, 0.03, 0.035, 0.04, 0.045, 0.05, 0.1, 0.5, 1]:
                 uniformed = uniform_quantization(all_vect_weights, delta/dd, self.b)
                 unique = np.unique(uniformed)
-                print(delta/dd, len(unique))
+                #print(delta/dd, len(unique))
                 if len(unique) <= perc:
                     ok = True
-                    print("used ",delta/dd, len(unique))
+                    #print("used ",delta/dd, len(unique))
                     centers = unique.reshape(-1,1)
                     perc = len(unique)
                     idx_layers = [uCWS.redefine_weights(w, centers) for w in massive_weight_list]
