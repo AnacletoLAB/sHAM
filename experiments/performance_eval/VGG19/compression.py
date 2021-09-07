@@ -105,8 +105,8 @@ def main(compression, net, dataset, learning_rate, lr_cumulative, minibatch, prf
     compression_model.set_optimizer(tf.keras.optimizers.SGD(lr=learning_rate, momentum=0.9, nesterov=True))
     post_compr_train = compression_model.model.evaluate(x_train, y_train)[1]
     post_compr_test = compression_model.model.evaluate(x_test, y_test)[1]
-    print("Setting initial compression conf before retrain, performance on train -->" , post_compr_train)
-    print("Setting initial compression conf before retrain, performance on test -->" , post_compr_test)
+    print("Applying initial compression setting before retrain, performance on train -->" , post_compr_train)
+    print("Applying initial compression setting before retrain, performance on test -->" , post_compr_test)
 
     if compression == "pr":
         compression_model.train_pr(epochs=100, dataset=dataset, X_train=x_train, y_train=y_train, X_test=x_test, y_test=y_test, step_per_epoch = 10000000, patience=0)
