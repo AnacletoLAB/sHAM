@@ -36,7 +36,21 @@ From the root of this repository:
 * compile:  `make`.
 
 This procedure generates the `libmegaDot.so` library file that can be imported in any Python script
-as `from libmegaDot import dotp_cpp, dotp_cpp_sparse`. A pre-compiled version for Linux x86-64 is present
+as `from libmegaDot import dotp_cpp, dotp_cpp_sparse`. **Note**: The provided CMakeList configures the
+compiler to create a library that can be executed only on architecture featuring at least AVX2 instructions.
+If the program crashes with "illegal instruction" errors (SIGILL), your hardware archiecture may be 
+not supported by the defaut options. In this case, try modifying the [CMakeLists file](megaDot/CMakeLists.txt),
+line 15 from:
+```
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mavx2")
+```
+to:
+```
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mavx")
+```
+or comment it altogether.
+
+A pre-compiled version for Linux x86-64 is present
 in the `experiments/time_space` directory, that is to be overwritten by a locally compiled version, since runtime issues 
 will arise when the Python3 version (used to complile it) is different than the one in use on the local machine.
 
