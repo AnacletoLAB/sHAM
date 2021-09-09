@@ -20,7 +20,7 @@ presented paper.
 * Install `python3`, `python3-pip` and `python3-venv` (Debian 10.6).
 * Make sure that `python --version` starts by 3 or execute `alias python='pyhton3'` in the shell.
 * For CUDA configuration (if a GPU is available) follow https://www.tensorflow.org/install/gpu.
-* Create a virtual environment and install the required depedencies: `pip install tensorflow==2.2.0 click==8.0.1 matplotlib==3.4.3 sklearn numpy==1.20 numba==0.54.0 pympler==0.9 pytest`
+* Create a virtual environment and install the required depedencies: `pip install tensorflow==2.2.0 click==8.0.1 matplotlib==3.4.3 sklearn numpy==1.20 numba==0.54.0 pympler==0.9 pytest`. The set of suggested dependencies have been tested with Python 3.7.
 * Finally, from the root of this repository, install the Python package through pip: `pip install ./sHAM_package`.
 
 ### Compiling megaDot
@@ -37,9 +37,9 @@ From the root of this repository:
 
 This procedure generates the `libmegaDot.so` library file that can be imported in any Python script
 as `from libmegaDot import dotp_cpp, dotp_cpp_sparse`. **Note**: The provided CMakeList configures the
-compiler to create a library that can be executed only on architecture featuring at least AVX2 instructions.
-If the program crashes with "illegal instruction" errors (SIGILL), your hardware archiecture may be 
-not supported by the defaut options. In this case, try modifying the [CMakeLists file](megaDot/CMakeLists.txt),
+compiler to create a library that can be executed only on architectures featuring at least AVX2 instructions.
+If the program crashes with "illegal instruction" errors (SIGILL), the target CPU may not be 
+supported by the defalut options. In this case, try modifying the [CMakeLists file](megaDot/CMakeLists.txt),
 line 15 from:
 ```
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mavx2")
@@ -48,7 +48,7 @@ to:
 ```
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mavx")
 ```
-or comment it altogether.
+or comment it altogether, and recompile the library.
 
 A pre-compiled version for Linux x86-64 is present
 in the `experiments/time_space` directory, that is to be overwritten by a locally compiled version, since runtime issues 
