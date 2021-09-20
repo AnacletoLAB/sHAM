@@ -119,7 +119,9 @@ def main(compression, net, dataset, learning_rate, lr_cumulative, minibatch, prf
     TEST_RES = ([pre_compr_test] + [post_compr_test] + compression_model.acc_test)
 
     if compression in ['uUQ', 'pruUQ', 'uECSQ', 'pruECSQ']:
-        compression_param = "-".join([str(x) for x in [prfc, prcnn, len(compression_model.centers_fc), len(compression_model.centers_cnn)]]) + '-'
+        temp_centers_fc  = len(compression_model.centers_fc)  if hasattr(compression_model, 'centers_fc')  else 0
+        temp_centers_cnn = len(compression_model.centers_cnn) if hasattr(compression_model, 'centers_cnn') else 0
+        compression_param = "-".join([str(x) for x in [prfc, prcnn, temp_centers_fc, temp_centers_cnn]]) + '-'
     else:
         compression_param = "-".join([str(x) for x in [prfc, prcnn, clusterfc, clustercnn]]) + '-'
 
