@@ -576,7 +576,7 @@ def compute_cdot(n, m, input_x, ham_or_sham, code, cdot_structure, input_row_num
     elif ham_or_sham == "sham":
       clib.dotMAT.argtypes = [ctypes.c_ushort, ctypes.c_ushort, ctypes.c_uint, ctypes.c_uint, ctypes.c_uint, ctypes.c_ushort, ctypes.c_ubyte, ctypes.c_ubyte, ctypes.c_uint, ND_POINTER_uint, ND_POINTER_uint, ND_POINTER_usint, ND_POINTER_uint, ND_POINTER_float32, ND_POINTER2_float32, ND_POINTER2_float32, ND_POINTER_uint, ND_POINTER_uint, ND_POINTER_uint, ctypes.c_ushort]
       dot_time = timeit.timeit(lambda:clib.dotMAT(K, fcl_length, MATROW, MATCOL, CHAM_DIM, LMAX, thread_count, WORDSIZE, input_row_num, first_code_l, CHAM, first_symbol, col_end, symbols, resmat, left_mat, ri, cb, partial_table, T), number=num, globals=globals()) / num
-  elif variabt == "full":
+  elif variant == "full":
     if ham_or_sham == "ham":
       clib.dotMAT.argtypes = [ctypes.c_ushort, ctypes.c_ushort, ctypes.c_uint, ctypes.c_uint, ctypes.c_uint, ctypes.c_ushort, ctypes.c_ubyte, ctypes.c_ubyte, ctypes.c_uint, ND_POINTER_uint, ND_POINTER_uint, ND_POINTER_usint, ND_POINTER_uint, ND_POINTER_float32, ND_POINTER2_float32, ND_POINTER2_float32, ND_POINTER_uint]
       dot_time = timeit.timeit(lambda:clib.dotMAT(K, fcl_length, MATROW, MATCOL, CHAM_DIM, LMAX, thread_count, WORDSIZE, input_row_num, first_code_l, CHAM, first_symbol, col_end, symbols, resmat, left_mat, table), number=num, globals=globals()) / num
