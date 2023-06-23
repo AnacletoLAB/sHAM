@@ -231,8 +231,7 @@ def compute_nn_energies(nn_name, ham_code, sham_code, b=32):
 def compute_nn_times(nn_name, ham_code, sham_code, variant="partial", matrix=None, input_row_num=8, rep=25, num=1, nthread=8, cdot_path="../c_dot/", seed=0, b=32, matrix_type="float32"):
   times = {"HAM":0, "sHAM":0, "CSC":0, "IM":0}
   for matrix_name in get_matrices_names_from_unique_name(nn_name):
-    if matrix is None:
-      matrix = load_nn_matrix(matrix_name)
+    matrix = load_nn_matrix(matrix_name)
     n, m = matrix.shape
     csc_structure = csc_matrix(matrix)
     nz = csc_structure.data
