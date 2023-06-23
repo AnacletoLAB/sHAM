@@ -44,10 +44,11 @@ The python script *utils.py* contains all the primitives used to build the compr
 
 The main folder contains three directories:
 * *c_dot*, containing the source code written in C language and the executable files to perform the matrix-vector multiplication of our sparse formats.
+
 * *nns*, containing a Python script (*experiments.py*) to reproduce the experiments shown in the paper, with all the required data; the results in *.csv* format are stored in the *result* folder.
 * *benchmark*, organized as the *nns* directory.
 
-In the main folder, there are also two *.sh* scripts to run the experiments (detailed below, in the *Usage* section.)
+In the main folder, there are also two *.sh* scripts to run the experiments (detailed below, in the *Usage* section).
 
 ## Usage
 We provide two simple *.sh* scripts to run the experiments:
@@ -55,6 +56,13 @@ We provide two simple *.sh* scripts to run the experiments:
 * *full_experiments.sh* computes space occupancy, dot time and energy requirements for all the matrices
 
 **Warning:** *Census* and *ImageNet* might take some time and memory to build the compressed structures.
+
+It is advisable to compile the *.c* files for the dot product, by running the following:
+  ```
+  gcc -w -fPIC -shared -o ham_dot_partial.so ham_dot_partial.c -pedantic -Wall -pthread
+gcc -w -fPIC -shared -o sham_dot_partial.so sham_dot_partial.c -pedantic -Wall -pthread
+  ```
+
 
 ## Downloading the matrices
 In order to reproduce the experiments, you should download [this](https://www.mediafire.com/file/m0cjv959w4melbu/sHAM_data.tar.gz/file) *.tar.gz* file, containing all the matrices, and merge the repository with the downloaded data.
