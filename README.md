@@ -57,10 +57,10 @@ We provide two simple *.sh* scripts to run the experiments:
 
 **Warning:** *Census* and *ImageNet* might take some time and memory to build the compressed structures.
 
-Compiling the *.c* files for the dot product can be easily done by running the following:
+Compiling the *.c* files for the dot product can be easily done by running from the main directory the following:
   ```
-  gcc -w -fPIC -shared -o ham_dot_partial.so ham_dot_partial.c -pedantic -Wall -pthread
-gcc -w -fPIC -shared -o sham_dot_partial.so sham_dot_partial.c -pedantic -Wall -pthread
+  gcc -w -fPIC -shared -o c_dot/ham_dot_partial.so c_dot/ham_dot_partial.c -pedantic -Wall -pthread
+gcc -w -fPIC -shared -o c_dot/sham_dot_partial.so c_dot/sham_dot_partial.c -pedantic -Wall -pthread
   ```
 
 
