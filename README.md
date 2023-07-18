@@ -1,4 +1,5 @@
 # Efficient and Compact Representations of Deep Neural Networks via Entropy Coding
+This realization of this repository has been supported by the Italian MUR PRIN project “Multicriteria data structures and algorithms: from compressed to learned indexes, and beyond” (Prot. 2017WR7SHH).
 
 ## HAM and sHAM
 We have improved our HAM and sHAM compressed matrices formats by using a Canonical Huffman code that does not require to access the Huffman tree to perform decoding.
